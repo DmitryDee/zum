@@ -1,0 +1,18 @@
+body {
+  background: #353353;
+}
+
+.row{
+  display: flex;
+}
+
+a {
+  color: #fdfdff;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 200px) {
+  html {
+    font-size: 20px;
+  }
+}
