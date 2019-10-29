@@ -3,6 +3,9 @@ a {
   color: #e5e5e5;
 }
 
+a {
+  margin-bottom: 5px;
+}
 
 @media screen and (max-width: 200px) {
   a {
