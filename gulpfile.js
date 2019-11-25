@@ -4,6 +4,7 @@ const concat = require('gulp-concat');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const SASS = require('gulp-sass');
+const htmlbeautify = require('gulp-html-beautify');
 
 const STYLEFiles = [
   './node_modules/normalize.css/normalize.css',
@@ -23,6 +24,8 @@ const JSFiles = [
 const DEL = require('del');
 const browserSync = require('browser-sync').create();
 
+
+
 // ! TASKS BLOCK
 function sass(){
   return gulp.src(STYLEFiles)
@@ -37,6 +40,7 @@ function sass(){
                   level: 2
               }))
               .pipe(gulp.dest('./build/css'))
+              .pipe(browserSync.stream());
 }
 
 function styles(){
@@ -51,10 +55,7 @@ function styles(){
                   level: 2
               }))
               .pipe(gulp.dest('./css'))
-
-              /* OPTIONAL
               .pipe(browserSync.stream());
-              */
 
 }
 
@@ -65,31 +66,36 @@ function scripts(){
             toplevel: true
           }))
           .pipe(gulp.dest('./build/js'))
-
-          /* OPTIONAL
           .pipe(browserSync.stream());
-          */
+}
+
+
+function html() {
+  return gulp.src('./src/html/**/*.html')
+            .pipe(htmlbeautify({
+              indentSize: 2
+            }))
+            .pipe(gulp.dest('./build/'))
+            .pipe(browserSync.stream());
 }
 
 function watch(){
-  /* OPTIONAL
+  // OPTIONAL
   browserSync.init({
     server: {
-      baseDir: "./"
+      baseDir: "./build/"
     },
     // if you need to share your gulp 
     // bundle, use tunnel mode
-    tunnel: true
+    // tunnel: true
   });
-  */
 
   gulp.watch(['./src/sass/**/*.sass',
               './src/css/**/*.css'], sass);  
   gulp.watch('./src/js/**/*.js', scripts);
+  gulp.watch('./src/html/**/*.html', html);
   
-  /* OPTIONAL
-  gulp.watch('./*.html', browserSync.reload)  
-  */
+  // gulp.watch('./src/html/**/*.html', browserSync.reload);  
 }
 
 function clean(){
@@ -99,6 +105,7 @@ function clean(){
 gulp.task('styles', styles);
 gulp.task('scripts', scripts);
 gulp.task('sass', sass);
+gulp.task('html', html);
 gulp.task('watch', watch);
 
 // ! You dont need to register it
@@ -106,7 +113,7 @@ gulp.task('clean', clean);
 
 // you can use 'clean' or clean 
 gulp.task('build',gulp.series('clean',
-                      gulp.parallel('sass', 'scripts')
+                      gulp.parallel('sass', 'scripts', 'html')
                   ));
 
 gulp.task('dev', gulp.series('build','watch'));    
