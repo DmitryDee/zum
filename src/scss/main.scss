@@ -1,0 +1,383 @@
+@import '../../node_modules/normalize.css/normalize.css';
+@import '../../node_modules/slick-carousel/slick/slick.scss';
+@import '../../node_modules/slick-carousel/slick/slick-theme.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500&display=swap');
+
+/*
+  * success-slider
+  * achievements
+  * tab-item
+  * helpers
+*/
+
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+
+  overflow: hidden; 
+}
+
+.success-slider{
+  background: #eff8ff;
+
+  &__heading-holder{
+    display: flex;
+    justify-content: space-between;
+    
+    height: 230px;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  &__heading{
+    display: inline-block;
+    margin: 0;
+
+    font-size: 36px;
+    line-height: 25px;
+    font-weight: 500;
+
+    color: #1F1F1F;
+  }
+
+  &__items-list{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    max-width: 1140px; 
+    top: 260px;
+
+    // helper
+    & .slick-list{
+      overflow: visible;
+    }
+  }
+
+  &__year-nav-holder{
+    display: flex;
+    align-items: center;
+    align-items: flex-start
+  }
+
+  &__year-nav{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  } 
+
+  &__year-holder{
+    display: flex;
+  }
+
+  &__year-nav-item{
+    display: inline-block;
+    margin: 0 15px;
+    text-align: center;
+
+  }
+
+  // helper
+  .slick-current &__year-nav-item{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #424242;
+  }
+
+}
+
+.achievements{
+  position: relative;
+  max-width: 1140px;
+  margin: 0 auto;
+
+  background: linear-gradient(0deg,rgba(8, 40, 117, 0.13),rgba(85, 110, 171, 0.33)),url(../img/Rectangle.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &__tab-holder{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -150px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    padding-top: 14px;
+  }
+
+  &__tab-item{
+    width: 262px;
+    height: 200px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  }
+
+  &__descr-holder{
+    position: relative;
+    margin: 0;
+    height: 240px;
+  }
+
+  &__descr{
+    display: none;
+    position: absolute;
+    font-size: 16px;
+    line-height: 140%;
+    padding: 120px 96px 38px 68px;
+    margin: 0;
+    color: #fff;
+
+    &_active{
+      display: block;
+    }
+
+    &:before{
+      content: '';
+      position: absolute;
+      bottom: 72px;
+      left: 34px;
+      width: 45px;
+      height: 1px;
+      transform: rotate(90deg);
+      background: #ffd600;
+    }
+  }
+}
+
+.tab-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  transition: all 200ms ease-in;
+  
+  color: #424242;
+
+  cursor: pointer;
+
+  &_active{
+    transform: translateY(30px);
+  }
+
+  &__icon{
+    margin-bottom: 12px;
+  }
+
+  &__heading{
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__subheading{
+    margin: 0;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+.arrow{
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+
+  border: 1.5px solid rgba(68, 109, 145, 0.2);
+  box-sizing: border-box;
+
+  background-repeat: no-repeat;
+  background-position: center;
+
+  cursor: pointer;
+
+  &_prev-year{
+    background-image: url(../img/prev-arrow.svg);
+  }
+  &_next-year{
+    background-image: url(../img/next-arrow.svg);
+  }
+}
+
+
+@media screen and (max-width: 768px){
+  .success-slider{
+
+    &__heading-holder{
+      height: 230px;
+      max-width: 100%;
+    }
+
+    &__heading{
+      font-size: 24px;
+    }
+
+    &__items-list{
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 188px;
+      max-width: 708px;
+    }
+
+    &__year-nav{
+      
+      &-item{
+        margin-right: 25px;
+        font-size: 14px;
+        line-height: 16px;
+        color: #C4C4C4;
+      }
+      &-item_active{
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 23px;
+        color: #424242;
+      }
+    }
+  }
+
+  .achievements{
+    max-width: 708px;
+
+    &__tab-holder{
+      top: -90px;
+    }
+
+    &__tab-item{
+      width: 160px;
+      height: 139px;
+
+      background: #FFFFFF;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+    }
+
+    &__descr{
+      margin: 0;
+      padding-top: 90px;
+      padding-bottom: 38px;
+      padding-left: 40px;
+      padding-right: 40px;
+
+      font-size: 16px;
+      line-height: 140%;
+      color: #FFFFFF;
+
+      &:before{
+        display: none;
+      }
+    }
+
+  }
+
+  .tab-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    text-align: center;
+    color: #424242;
+
+    transform: none;
+  }
+}
+
+
+@media screen and (max-width: 375px){
+
+  .success-slider{
+
+    &__heading-holder{
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 304px;
+
+      padding-left: 15px;
+      padding-right: 15px;
+
+      
+    }
+
+    &__heading{
+      margin-bottom: 20px;
+      margin-right: 15px;
+      margin-left: 15px;
+
+      font-size: 21px;
+      line-height: 25px;
+      font-weight: 500;
+  
+      color: #1F1F1F;
+    }
+
+    &__items-list{
+      top: 304px;
+      max-width: 100%;
+    }
+
+    &__year-nav{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      margin-bottom: 20px;
+
+      &-item_active{
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 23px;
+        color: #424242;
+      }
+    }
+  }
+
+  .achievements{
+    padding: 178px 0 0;
+    max-width: 100%;
+
+    &__tab-holder{
+      top: -200px;
+      justify-content: space-evenly;
+      padding-top: 18px;
+    }
+
+    &__tab-item{
+      width: 160px;
+      height: 139px;
+      margin-bottom: 20px;
+
+      background: #FFFFFF;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+    }
+
+    &__descr{
+      margin: 0;
+      padding: 0 44px 30px 50px;
+      font-size: 14px;
+      line-height: 140%;
+      color: #FFFFFF;
+    }
+  }
+
+  .arrow{
+    display: none;
+  }
+}
