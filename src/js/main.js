@@ -35,7 +35,12 @@ $(document).ready(function(){
     ]
   });
 
+
   $('.arrow').on('click', function(){
+    setData();
+  });
+
+  $('.success-slider__year-holder').on('swipe', function(event, slick, direction){
     setData();
   });
 
