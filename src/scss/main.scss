@@ -403,18 +403,19 @@ body {
 
     &__tab-holder{
       top: -200px;
-      justify-content: space-evenly;
+      justify-content: center;
       padding-top: 18px;
+      max-width: 80%;
+      margin: 0 auto;
     }
 
     &__tab-item{
-      width: 160px;
-      height: 140px;
       margin-bottom: 20px;
-
-      background: #FFFFFF;
-      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-      border-radius: 10px;
+      margin-right: 20px;
+      
+      &:nth-child(2n){
+        margin-right: 0;
+      }
     }
 
     &__descr{
@@ -431,12 +432,24 @@ body {
   }
 }
 
-@media screen and (max-width: 375px){
-  &__tab-item{
+@media screen and (max-width: 450px){
+  .achievements{
+    &__tab-holder{
+      justify-content: space-around;
+      max-width: 90%;
+    }
 
-    &:nth-child(2n){
+    &__tab-item{
       margin-right: 0;
     }
   }
 }
 
+@media screen and (max-width: 450px){
+  .achievements{
+    &__tab-holder{
+      justify-content: space-around;
+      max-width: 100%;
+    }
+  }
+}
